@@ -14,11 +14,15 @@ import org.springframework.kafka.core.KafkaAdmin;
 public class KafkaConfiguration {
 	@Value(value = "${kafka.bootstrapAddress}")
     private String bootstrapAddress;
+	
+	@Value(value = "${kafka.groupId}")
+    private String groupId;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, groupId);
         return new KafkaAdmin(configs);
     }
     

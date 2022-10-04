@@ -1,6 +1,7 @@
 package org.sei.utils.kafka.service;
 
-import org.sei.utils.kafka.KafkaProducer;
+import org.sei.utils.kafka.service.messages.CreateKafkaMessageRequest;
+import org.sei.utils.kafka.service.messages.CreateKafkaMessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,9 @@ public class KafkaUtilsController {
 	@Autowired
     KafkaUtilsService kafkaUtilsService;
 	
-	@Autowired
-	KafkaProducer kafkaProducer;
-	
 	@PostMapping("/kafka-messages")
-	public ResponseEntity<CreateKafkaMessageResponse> createKafkaMessage( @RequestBody String message) {
-		CreateKafkaMessageResponse createKafkaMessageResponse = new CreateKafkaMessageResponse(kafkaProducer.sendMessage("quickstart-events",message));
+	public ResponseEntity<CreateKafkaMessageResponse> createKafkaMessage( @RequestBody CreateKafkaMessageRequest createKafkaMessageRequest) {
+		CreateKafkaMessageResponse createKafkaMessageResponse = kafkaUtilsService.createKafkaMessage(createKafkaMessageRequest);
         return new ResponseEntity<>(createKafkaMessageResponse, HttpStatus.CREATED);
     }
 	

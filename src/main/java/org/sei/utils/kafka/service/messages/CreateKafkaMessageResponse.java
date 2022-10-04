@@ -1,4 +1,4 @@
-package org.sei.utils.kafka.service;
+package org.sei.utils.kafka.service.messages;
 
 public class CreateKafkaMessageResponse {
 
@@ -8,11 +8,11 @@ public class CreateKafkaMessageResponse {
 		this.offset = offset;
 	}
 	
-	public String getOutcome() {
+	public String getOffset() {
 		return offset;
 	}
 
-	public void setOutcome(String offset) {
+	public void setOffset(String offset) {
 		this.offset = offset;
 	}
 	

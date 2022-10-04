@@ -15,7 +15,7 @@ public class KafkaProducer {
 
 	public String sendMessage(String topic, String message) {
 		try {
-			return kafkaTemplate.send(topic, message).get().getRecordMetadata().toString();
+			return kafkaTemplate.send(topic, message).get().getRecordMetadata().toString().split("@")[1];
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block
 			return e.getMessage();

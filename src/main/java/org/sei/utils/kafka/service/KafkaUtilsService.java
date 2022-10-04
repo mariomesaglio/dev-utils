@@ -1,11 +1,12 @@
 package org.sei.utils.kafka.service;
 
+import org.sei.utils.kafka.service.messages.CreateKafkaMessageRequest;
+import org.sei.utils.kafka.service.messages.CreateKafkaMessageResponse;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface KafkaUtilsService {
 
-	
-	String createKafkaMessage(String message);
+	CreateKafkaMessageResponse createKafkaMessage(CreateKafkaMessageRequest createKafkaMessageRequest);
 	
 }
